@@ -41,6 +41,7 @@ namespace SeleniumTestMusicLibrary
             // Eksempel på at tjekke indholdet af den første række
             var firstRowTitle = recordRows[0].FindElement(By.ClassName("record-title")).Text;
             Assert.True(!string.IsNullOrEmpty(firstRowTitle), "Den første musikplade mangler en titel.");
+
         }
     }
 }
