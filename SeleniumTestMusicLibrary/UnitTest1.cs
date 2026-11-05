@@ -43,6 +43,33 @@ namespace SeleniumTestMusicLibrary
             Assert.True(!string.IsNullOrEmpty(firstRowTitle), "Den første musikplade mangler en titel.");
 
         }
+        [Fact]
+        public void Add_Music_Record_ShouldDisplayNewRecord()
+        {
+            string url = "http://127.0.0.1:5500/index.html";
+            _driver.Navigate().GoToUrl(url);
+
+            IWebElement addButton = _driver.FindElement(By.Id("add-button"));
+            addButton.Click();
+
+            IWebElement titleElement = _driver.FindElement(By.Id("add-record-title"));
+            titleElement.SendKeys("Test Title");
+
+            IWebElement artistElement = _driver.FindElement(By.Id("add-record-artist"));
+            artistElement.SendKeys("Test Artist");
+
+            IWebElement durationElement = _driver.FindElement(By.Id("add-record-duration"));
+            durationElement.SendKeys("130");
+
+            IWebElement yearElement = _driver.FindElement(By.Id("add-record-year"));
+            yearElement.SendKeys("2023");
+
+            IWebElement submitButton = _driver.FindElement(By.Id("add-record-submit"));
+            submitButton.Click();
+
+
+
+        }
     }
 }
 
