@@ -161,10 +161,32 @@ namespace SeleniumTestMusicLibrary
                 record => record.FindElement(By.ClassName("record-title")).Text == deletedTitle);
         }
 
+        [Fact]
 
+        public void UpdateMusicRecord_ShouldChangeRecordDetails()
+        {
+            string url = "http://127.0.0.1:5500/index.html";
+            _driver.Navigate().GoToUrl(url);
 
+            IWebElement updateButton = _driver.FindElement(By.Id("update-record-button"));
+            updateButton.Click();
 
+            IWebElement titleElement = _driver.FindElement(By.Id("edit-record-title"));
+            titleElement.SendKeys("Test Title");
 
+            IWebElement artistElement = _driver.FindElement(By.Id("edit-record-artist"));
+            artistElement.SendKeys("Test Artist");
+
+            IWebElement durationElement = _driver.FindElement(By.Id("edit-record-duration"));
+            durationElement.SendKeys("130");
+
+            IWebElement yearElement = _driver.FindElement(By.Id("edit-record-year"));
+            yearElement.SendKeys("2023");
+
+            IWebElement submitButton = _driver.FindElement(By.Id("edit-record-submit"));
+            submitButton.Click();
+
+        }
     }
 }
 
