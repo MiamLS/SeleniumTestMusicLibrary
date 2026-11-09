@@ -171,17 +171,16 @@ namespace SeleniumTestMusicLibrary
             IWebElement updateButton = _driver.FindElement(By.Id("update-record-button"));
             updateButton.Click();
 
-            IWebElement titleElement = _driver.FindElement(By.Id("edit-record-title"));
+            IWebElement titleElement = _wait.Until(d => d.FindElement(By.Id("edit-record-title")));
+            titleElement.Clear();
+
+            _wait.Until(d => titleElement.GetAttribute("value") == string.Empty);
+
             titleElement.SendKeys("Test Title");
-
+       
             IWebElement artistElement = _driver.FindElement(By.Id("edit-record-artist"));
+            artistElement.Clear();
             artistElement.SendKeys("Test Artist");
-
-            IWebElement durationElement = _driver.FindElement(By.Id("edit-record-duration"));
-            durationElement.SendKeys("130");
-
-            IWebElement yearElement = _driver.FindElement(By.Id("edit-record-year"));
-            yearElement.SendKeys("2023");
 
             IWebElement submitButton = _driver.FindElement(By.Id("edit-record-submit"));
             submitButton.Click();
